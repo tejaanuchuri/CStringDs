@@ -24,4 +24,8 @@ public:
 	CString n_text;
 	afx_msg void OnEnChangeEdit2();
 	CString n_text2;
+	afx_msg void OnBnClickedButton1();
+	CString n_output;
+	afx_msg void OnStnClickedOutput();
+	CString noutput;
 };

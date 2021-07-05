@@ -15,6 +15,8 @@ CSetTextDLG::CSetTextDLG(CWnd* pParent /*=nullptr*/)
 	: CDialog(IDD_DLG_SET_TEXT, pParent)
 	, n_text(_T(""))
 	, n_text2(_T(""))
+	, n_output(_T(""))
+	, noutput(_T(""))
 {
 
 }
@@ -28,11 +30,15 @@ void CSetTextDLG::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_EDIT1, n_text);
 	DDX_Text(pDX, IDC_EDIT2, n_text2);
+	DDX_Text(pDX, IDC_OUTPUT, n_output);
+	DDX_Text(pDX, IDC_EDIT3, noutput);
 }
 
 
 BEGIN_MESSAGE_MAP(CSetTextDLG, CDialog)
 	ON_EN_CHANGE(IDC_EDIT2, &CSetTextDLG::OnEnChangeEdit2)
+	ON_BN_CLICKED(IDC_BUTTON1, &CSetTextDLG::OnBnClickedButton1)
+	ON_STN_CLICKED(IDC_OUTPUT, &CSetTextDLG::OnStnClickedOutput)
 END_MESSAGE_MAP()
 
 
@@ -47,4 +53,20 @@ void CSetTextDLG::OnEnChangeEdit2()
 	// with the ENM_CHANGE flag ORed into the mask.
 
 	// TODO:  Add your control notification handler code here
+}
+
+
+void CSetTextDLG::OnBnClickedButton1()
+{
+	CSetTextDLG dlg;
+	CString s1 = dlg.n_text;
+	CString s2 = dlg.n_text2;
+	CString output;
+	
+}
+
+
+void CSetTextDLG::OnStnClickedOutput()
+{
+	// TODO: Add your control notification handler code here
 }

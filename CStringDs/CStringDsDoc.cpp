@@ -11,6 +11,7 @@
 #endif
 
 #include "CStringDsDoc.h"
+#include "CStringLength.h"
 #include "CSetTextDLG.h"
 #include <propkey.h>
 
@@ -24,6 +25,7 @@ IMPLEMENT_DYNCREATE(CCStringDsDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CCStringDsDoc, CDocument)
 	ON_COMMAND(ID_CSTRING_OPENDIALOG, &CCStringDsDoc::OnCstringOpendialog)
+	ON_COMMAND(ID_CSTRING_GETLENGTH, &CCStringDsDoc::OnCstringGetlength)
 END_MESSAGE_MAP()
 
 
@@ -144,18 +146,38 @@ void CCStringDsDoc::OnCstringOpendialog()
 	//AfxMessageBox(L"Hello World Teja Anuchuri...!");
 	// TODO: Add your command handler code here
 	CSetTextDLG dlgSetText;
-	if (dlgSetText.DoModal() == IDOK) {
+	if (dlgSetText.DoModal() == IDC_BUTTON1) {
+		
 		CString S1 = dlgSetText.n_text;
 		CString S2 = dlgSetText.n_text2;
 		CString output;
 		if (S1 == S2) {
 			output.Append(L"String Are Equal");
+			dlgSetText.noutput = output;
 		}
 		else {
 			output.Append(L"String Are Not Equal");
+			dlgSetText.noutput = output;
 		}
+
 		m_text.Append(output);
 		UpdateAllViews(NULL);
 	}
 	
+}
+
+
+void CCStringDsDoc::OnCstringGetlength()
+{
+	CStringLength dlg_CStrLen;
+	if (dlg_CStrLen.DoModal() == IDOK) {
+
+		CString S1 = dlg_CStrLen.stringname;
+		int n = S1.GetLength();
+		CString S;
+		S.Format(_T("%d"), n);
+		CString Out_put = _T("Length of the String : ");
+		m_text = Out_put + S;
+		UpdateAllViews(NULL);
+	}
 }

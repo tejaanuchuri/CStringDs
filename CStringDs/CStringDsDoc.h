@@ -49,5 +49,7 @@ protected:
 public:
 	afx_msg void OnCstringOpendialog();
 private:
-	CString m_text{"OutPut:   "};
+	CString m_text;
+public:
+	afx_msg void OnCstringGetlength();
 };
